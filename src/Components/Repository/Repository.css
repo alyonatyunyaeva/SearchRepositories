@@ -1,0 +1,54 @@
+.repository {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 10px ;
+    padding: 10px 30px;
+    font-family: "century gothic", AppleGothic, Arial, Helvetica, sans-serif;
+    background-color: rgb(113, 140, 163);
+    border: solid 10px bisque;
+}
+.repository__line-1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.repository__line-2{
+    display: flex;
+    flex-direction: row;
+    font-size: 17px;
+    align-items: center;
+}
+
+.repository__image-container-img {
+    height: 50px;
+    margin: 20px 7px;
+}
+
+.repository__reposName {
+    margin: 20px 7px;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 0.07em;   
+}
+
+.repository__stars-img{
+    margin: 20px 7px;
+    content: "";
+    width: 27px;
+    height: 27px;
+    mask-image: url("/star.svg");
+    mask-repeat: no-repeat;
+    background-color: rgb(236, 197, 65);
+}
+
+.repository__stars {
+    margin: 20px 7px;
+}
+
+.repository__last-commit {
+    margin: 20px 7px;
+}
+
+.repository__link{
+    margin: 20px 7px;
+}
