@@ -1,0 +1,128 @@
+.repoDetails {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 10px ;
+    padding: 10px 30px;
+    font-family: "century gothic", AppleGothic, Arial, Helvetica, sans-serif;
+    background-color: rgb(113, 140, 163);
+    border: solid 10px bisque;
+}
+
+.repoDetails__back {
+    text-align: left;
+    font-size: 20px;
+    margin: 27px;
+}
+
+.repo-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+}
+.repo-header__names {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.repo-header__names-repository {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.repo-header__names-repository-image-container-img {
+    height: 50px;
+    margin: 12px 7px;
+}
+.repo-header__names-repository-image-container-img {
+    height: 50px;
+    margin: 12px 7px;
+}
+.repo-header__names-repository-name {
+    margin: 12px 7px;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 0.07em;   
+}
+.repo-header__names-owner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 15px;
+    text-align: left;
+    margin-left: 71px;
+}
+.repo-header__names-owner-link{
+    font-size: 25px;
+    letter-spacing: 0.07em;  
+}
+.repo-header__details {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    font-size: 17px;
+    align-items: center;
+}
+.repo-header__details-stars-img {
+    margin: 12px 7px;
+    content: "";
+    width: 27px;
+    height: 27px;
+    mask-image: url("/star.svg");
+    mask-repeat: no-repeat;
+    background-color: rgb(236, 197, 65);
+}
+.repo-header__details-stars {
+    margin: 12px 7px;
+}
+.repo-header__details-last-commit {
+    margin: 12px 7px;
+}
+
+.main-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 17px;
+    text-align: left;
+    margin: 20px;
+}
+
+.main-info__language{
+    margin: 20px;
+}
+
+.main-info__desc{
+    margin: 20px;
+}
+
+.repoDetails__pointer{
+ font-size: 30px;
+}
+
+
+
+.contributors-top{
+    display: flex;
+    flex-direction: column;
+}
+
+.contributors-top__list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.contributors-top__list__contributor{
+    margin: 20px;
+}
+.contributors-top__list__contributor-name{
+    font-size: 17px;
+}
+
+.contributors-top__list__contributor-img{
+    height: 70px;
+    margin: 7px 7px;
+}

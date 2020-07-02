@@ -1,5 +1,12 @@
 import React from 'react';
 import './Repository.css';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
+
 
 class Repository extends React.Component {
     render(){
@@ -11,7 +18,7 @@ class Repository extends React.Component {
                         <img src={this.props.repository.icon} className="repository__image-container-img" alt='Some picture'/>
                     </div>
                     <div className="repository__reposName">
-                        {this.props.repository.reposName}
+                       <Link to={`/details/${this.props.repository.ownerName}/${this.props.repository.reposName}`}>  {this.props.repository.reposName} </Link>
                     </div>
                 </div>
 

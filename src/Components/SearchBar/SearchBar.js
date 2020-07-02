@@ -1,5 +1,6 @@
 import React from 'react';
 import './SearchBar.css';
+import { withRouter } from 'react-router-dom';
 
 class SearchBar extends React.Component {
     constructor(props){
@@ -19,9 +20,18 @@ class SearchBar extends React.Component {
     }
 
     handleSearch(event){
+        
         if (!(event.type === 'keydown' && event.keyCode !== 13)){
-            this.props.searchReposByName(this.state.queryText);
-            event.preventDefault();
+            if (this.state.queryText !== ''){
+                this.props.history.push({
+                    pathname: `/search/${this.state.queryText}/1`,
+                });
+            } else {
+                this.props.history.push({
+                    pathname: '/',
+                });
+            }
+            
         }
         
     }
@@ -45,4 +55,4 @@ class SearchBar extends React.Component {
     }
 };
 
-export default SearchBar;
+export default withRouter(SearchBar);

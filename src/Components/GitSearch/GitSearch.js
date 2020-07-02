@@ -58,7 +58,7 @@ const gitHub = {
                             contributors: item.contributors_url,
                         };
                     }
-                );            
+                ) 
             }
         ).catch(
             () => {
@@ -67,6 +67,65 @@ const gitHub = {
             }
         );
     },
+    
+    searchCertainRepos(owner, name){
+        return fetch(`https://api.github.com/search/repositories?q=repo:${owner}/${name}`, 
+        ).then(
+            response=>{
+                return response.json();
+            }
+        ).then(
+            jsonResponse => {
+                return {
+                        id: jsonResponse.items[0].id,
+                        reposName: jsonResponse.items[0].name,
+                        reposUrl: jsonResponse.items[0].html_url,
+                        stars: jsonResponse.items[0].stargazers_count,
+                        lastCommitDate: jsonResponse.items[0].updated_at,
+                        icon: jsonResponse.items[0].owner.avatar_url,
+                        ownerName: jsonResponse.items[0].owner.login,
+                        ownerPage: jsonResponse.items[0].owner.html_url,
+                        language: jsonResponse.items[0].language,
+                        reposDesc: jsonResponse.items[0].description,
+                        contributors: jsonResponse.items[0].contributors_url,
+                        };        
+            }
+        ).catch(
+            () => {
+                console.log('--  Error  --')
+                return [];
+            }
+        );
+    },
+
+    searchContributors(url){
+        return fetch(url).then(
+            response=>{
+                return response.json();
+            }
+        ).then(
+            jsonResponse => {
+                return jsonResponse.map(
+                    contributor => {
+                        return  {
+                            id: contributor.id,
+                            contributorName: contributor.login,
+                            contributorImg: contributor.avatar_url,
+                            contributorLink: contributor.html_url,
+                            contributions: contributor.contributions,
+                        }
+                    }
+                ).slice(0, 10);             
+            }    
+        ).catch(
+            () => {
+                console.log('--  Error  --')
+                return [];
+            }
+        );
+    },
+
+
 };
 
 export default gitHub;

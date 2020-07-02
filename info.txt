@@ -1,0 +1,6 @@
+main - top 10 :/
+
+page with search result : /search/query/pagenumber
+    
+repository detail : details/username/reponame
+
