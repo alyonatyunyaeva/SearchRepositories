@@ -17,7 +17,11 @@ class App extends React.Component {
   render(){
     return (
       <Router>
-        <div className="App">
+        <div className="App">          
+          <div className="App-header">
+          REPOSITORIES SEARCH <br/>
+          NEW GENERATION
+          </div>
           <div className="App-main">
             <Switch>
               <Route path="/details/:username/:reponame">

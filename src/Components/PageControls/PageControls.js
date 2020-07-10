@@ -11,6 +11,7 @@ class PageControls extends React.Component {
     }
 
     handleSearchPlus(){
+        if (this.props.match.params.pagenumber < this.props.totalPages)
         this.props.history.push({
             pathname: `/search/${this.props.match.params.query}/${+this.props.match.params.pagenumber + 1}`,
         });
@@ -28,9 +29,9 @@ class PageControls extends React.Component {
     render() {
         return (
             <div>               
-                <button value='minus' onClick={this.handleSearchMinus}> назад </button>
-                {this.props.match.params.pagenumber}
-                <button value='plus' onClick={this.handleSearchPlus}> вперед </button>
+                <button value='minus' className = "pageControls" onClick={this.handleSearchMinus}>&#8249;</button>
+                {this.props.match.params.pagenumber} из {this.props.totalPages}
+                <button value='plus' className = "pageControls" onClick={this.handleSearchPlus}>&#8250;</button>
             </div>
         )
     }

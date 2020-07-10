@@ -8,6 +8,10 @@ const gitHub = {
             }
         ).then(
             jsonResponse => {
+                if (!jsonResponse.items) {
+                    return [];
+                }
+
                 return jsonResponse.items.map(
                     item => {
                         return  {
@@ -42,23 +46,29 @@ const gitHub = {
             }
         ).then(
             jsonResponse => {
-                return jsonResponse.items.map(
-                    item => {
-                        return  {
-                            id: item.id,
-                            reposName: item.name,
-                            reposUrl: item.html_url,
-                            stars: item.stargazers_count,
-                            lastCommitDate: item.updated_at,
-                            icon: item.owner.avatar_url,
-                            ownerName: item.owner.login,
-                            ownerPage: item.owner.html_url,
-                            language: item.language,
-                            reposDesc: item.description,
-                            contributors: item.contributors_url,
-                        };
-                    }
-                ) 
+                if (!jsonResponse.items) {
+                    return {totalCount: 0, repositories: []};
+                }
+                return {
+                    totalCount: jsonResponse.total_count,
+                    repositories: jsonResponse.items.map(
+                        item => {
+                            return  {
+                                id: item.id,
+                                reposName: item.name,
+                                reposUrl: item.html_url,
+                                stars: item.stargazers_count,
+                                lastCommitDate: item.updated_at,
+                                icon: item.owner.avatar_url,
+                                ownerName: item.owner.login,
+                                ownerPage: item.owner.html_url,
+                                language: item.language,
+                                reposDesc: item.description,
+                                contributors: item.contributors_url,
+                            };
+                        }
+                    ) 
+                }
             }
         ).catch(
             () => {
@@ -76,6 +86,9 @@ const gitHub = {
             }
         ).then(
             jsonResponse => {
+                if (!jsonResponse.items) {
+                    return [];
+                }
                 return {
                         id: jsonResponse.items[0].id,
                         reposName: jsonResponse.items[0].name,

@@ -1,38 +1,27 @@
+@font-face {
+  font-family: sservice; 
+  src: url(/sservice.ttf); /* Путь к файлу со шрифтом */
+ }
+
+
 .App {
   text-align: center;
+  background-color: #b0dcbe;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App-header {
+  height: 100px;
+  font-family: sservice;
+  font-size: 40px;
+  color: #ffe4c4;
+  text-shadow: -2px 2px white;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-main {
-  background-color: #282c34;
+  background-color: #b0dcbe;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

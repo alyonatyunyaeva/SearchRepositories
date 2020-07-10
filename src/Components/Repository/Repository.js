@@ -17,8 +17,9 @@ class Repository extends React.Component {
                     <div className="repository__image-container">
                         <img src={this.props.repository.icon} className="repository__image-container-img" alt='Some picture'/>
                     </div>
-                    <div className="repository__reposName">
-                       <Link to={`/details/${this.props.repository.ownerName}/${this.props.repository.reposName}`}>  {this.props.repository.reposName} </Link>
+                    <div>
+                       <Link to={`/details/${this.props.repository.ownerName}/${this.props.repository.reposName}`}
+                       className="repository__reposName">  {this.props.repository.reposName} </Link>
                     </div>
                 </div>
 

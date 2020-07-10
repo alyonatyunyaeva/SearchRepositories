@@ -16,12 +16,16 @@ class Details extends React.Component {
         this.state = {
             repository: {},
             contributors: [],
+            loading: false,
         };
 
-        this.goBack = this.goBack.bind(this)
+        this.goBack = this.goBack.bind(this);
         this.renderContriList = this.renderContriList.bind(this);
     }
     componentDidMount(){
+        this.setState({
+            loading: true
+        });
         let username = this.props.match.params.username,
             reponame = this.props.match.params.reponame;
         console.log(username, reponame)
@@ -29,6 +33,7 @@ class Details extends React.Component {
             repository => {
                 this.setState({
                   repository: repository,
+                  loading: false,
                 })
                 return repository.contributors
             }
@@ -50,20 +55,21 @@ class Details extends React.Component {
     renderContriList(){
         return this.state.contributors.map(
             contributor => {
-                return (
-                <div className="contributors-top__list__contributor" key={contributor.id}>
-                    <div>
-                        <img src={contributor.contributorImg} className="contributors-top__list__contributor-img"/>
+                return(
+                    <div className="contributors-top__list__contributor" key={contributor.id}>
+                        <div>
+                            <img src={contributor.contributorImg} className="contributors-top__list__contributor-img"/>
+                        </div>
+                        <div className="contributors-top__list__contributor-name">
+                            <a className="contributors-top__list__contributor-name" href={contributor.contributorLink} target='blank'>
+                                {contributor.contributorName}
+                            </a>
+                        </div>
+                        <div className="contributors-top__list__contributor-count">
+                            {contributor.contributions}
+                        </div>
                     </div>
-                    <div className="contributors-top__list__contributor-name">
-                        <a href={contributor.contributorLink} target='blank'>
-                            {contributor.contributorName}
-                        </a>
-                    </div>
-                    <div className="contributors-top__list__contributor-count">
-                        {contributor.contributions}
-                    </div>
-                </div>)
+                )
             }
         )
     }
@@ -78,56 +84,61 @@ class Details extends React.Component {
                 <div className="repoDetails__back" onClick={this.goBack}> 
                     ← back
                 </div>
-                <div className="repo-header">
-                    <div className="repo-header__names">
-                        <div className="repo-header__names-repository">
-                            <div className="repo-header__names-repository-image-container">
-                                <img src={this.state.repository.icon} className="repo-header__names-repository-image-container-img" alt='Owner Picture'/>
+
+                {this.state.loading && 'loading'}
+                {!this.state.loading &&
+                <div>
+                    <div className="repo-header">
+                        <div className="repo-header__names">
+                            <div className="repo-header__names-repository">
+                                <div className="repo-header__names-repository-image-container">
+                                    <img src={this.state.repository.icon} className="repo-header__names-repository-image-container-img" alt='Owner Picture'/>
+                                </div>
+                                <div className="repo-header__names-repository-name">
+                                    {this.state.repository.reposName} 
+                                </div>
                             </div>
-                            <div className="repo-header__names-repository-name">
-                                {this.state.repository.reposName} 
+                            <div className = "repo-header__names-owner">
+                                by <br/>
+                                <a href={this.state.repository.ownerPage} className="repo-header__names-owner-link" target="blank">
+                                    {this.state.repository.ownerName}
+                                </a>
                             </div>
                         </div>
-                        <div className = "repo-header__names-owner">
-                            by <br/>
-                            <a href={this.state.repository.ownerPage} className="repo-header__names-owner-link" target="blank">
-                                {this.state.repository.ownerName}
-                            </a>
+                        <div className="repo-header__details">
+                            <div className="repo-header__details-stars-img">
+                            </div>
+                            <p className="repo-header__details-stars">
+                                {this.state.repository.stars}
+                            </p>
+                            <p className="repo-header__details-last-commit">
+                                Last commit was <br/> {this.state.repository.lastCommitDate}
+                            </p>                   
                         </div>
                     </div>
-                    <div className="repo-header__details">
-                        <div className="repo-header__details-stars-img">
+
+                    <div className="main-info">
+
+                        <div className = "main-info__language">
+                            LANGUAGE <br/>
+                            {this.state.repository.language}
                         </div>
-                        <p className="repo-header__details-stars">
-                            {this.state.repository.stars}
-                        </p>
-                        <p className="repo-header__details-last-commit">
-                            Last commit was <br/> {this.state.repository.lastCommitDate}
-                        </p>                   
+                        <div className = "main-info__desc">
+                            DESCRIPTION <br/>
+                            {this.state.repository.reposDesc}
+                        </div>
+                    </div>
+
+                    <div className = "contributors-top">
+                        <div className="contributors-top__pointer">
+                            CONTRIBUTORS TOP 
+                        </div>      
+                        <div className="contributors-top__list">               
+                            {this.renderContriList()}   
+                        </div>              
                     </div>
                 </div>
-
-                <div className="main-info">
-
-                    <div className = "main-info__language">
-                        LANGUAGE <br/>
-                        {this.state.repository.language}
-                    </div>
-                    <div className = "main-info__desc">
-                        DESCRIPTION <br/>
-                        {this.state.repository.reposDesc}
-                    </div>
-                </div>
-
-                <div className = "contributors-top">
-                    <div className="contributors-top__pointer">
-                        CONTRIBUTORS TOP 
-                    </div>      
-                    <div className="contributors-top__list">               
-                        {this.renderContriList()}   
-                    </div>              
-                </div>
-
+                }
             </div>
         )
     }

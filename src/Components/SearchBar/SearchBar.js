@@ -40,15 +40,19 @@ class SearchBar extends React.Component {
     render() {
         return (
             <div>
-                <div className="SearchBar-fields">
+                <div className="searchBar-fields">
                     <input 
+                        className="searchBar-fields__input"
                         onChange={this.handleQueryText} 
                         onKeyDown={this.handleSearch}
-                        placeholder="Search Repositories" 
+                        placeholder="Your query... " 
                     />
                 </div>
-                <div className="SearchBar-submit" >
-                    <a onClick={this.handleSearch}>Let's Go</a>
+                <div className="searchBar-submit" >
+                    <a onClick={this.handleSearch}
+                        className="searchBar-submit__link">
+                        SEARCH!
+                    </a>
                 </div>
             </div>
         )

@@ -4,3 +4,20 @@ page with search result : /search/query/pagenumber
     
 repository detail : details/username/reponame
 
+####################
+
+ кнопка home
+
+{
+                            id: item.id,
+                            reposName: item.name,
+                            reposUrl: item.html_url,
+                            stars: item.stargazers_count,
+                            lastCommitDate: item.pushed_at,
+                            icon: item.owner.avatar_url,
+                            ownerName: item.owner.login,
+                            ownerPage: item.owner.html_url,
+                            language: item.language,
+                            reposDesc: item.description,
+                            contributors: item.contributors_url,
+                        };

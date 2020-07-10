@@ -1,0 +1,19 @@
+.pageControls {
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+    color: #577e63;
+    margin: 5px;    
+}
+.pageControls:focus {
+
+    outline: none;
+
+
+}
+.pageControls:active {
+
+    outline: none;
+    box-shadow: 0 0 3px 3px #ffe4c4;
+
+}
